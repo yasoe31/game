@@ -10,10 +10,10 @@ import javax.persistence.Id;
 public class Game {
 
 	@Id
-	@Column(name="game_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "game_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private int creationTime;
+	private long creationTime;
 
 	public Integer getId() {
 		return id;
@@ -23,11 +23,11 @@ public class Game {
 		this.id = id;
 	}
 
-	public int getCreationTime() {
+	public long getCreationTime() {
 		return creationTime;
 	}
 
-	public void setCreationTime(int creationTime) {
+	public void setCreationTime(long creationTime) {
 		this.creationTime = creationTime;
 	}
 
@@ -43,7 +43,11 @@ public class Game {
 		} else {
 			return false;
 		}
+	}
 
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", creationTime=" + creationTime + "]";
 	}
 
 }
