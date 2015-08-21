@@ -15,7 +15,7 @@ public class GameService {
 	public void createGame() {
 
 		Game game = new Game();
-		game.setCreationTime(System.currentTimeMillis() % 1000);
+		game.setCreationTime(System.currentTimeMillis());
 
 		gameRepository.save(game);
 	}
