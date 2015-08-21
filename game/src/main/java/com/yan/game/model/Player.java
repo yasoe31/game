@@ -10,8 +10,8 @@ import javax.persistence.Id;
 public class Player {
 
 	@Id
-	@Column(name="player_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "player_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 
@@ -43,6 +43,11 @@ public class Player {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", name=" + name + "]";
 	}
 
 }
