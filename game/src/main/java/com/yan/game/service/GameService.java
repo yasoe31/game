@@ -12,7 +12,10 @@ public class GameService {
 	@Autowired
 	private GameRepository gameRepository;
 
-	public void createGame(Game game) {
+	public void createGame() {
+
+		Game game = new Game();
+		game.setCreationTime(System.currentTimeMillis() % 1000);
 
 		gameRepository.save(game);
 	}
