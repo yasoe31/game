@@ -14,9 +14,9 @@ public class PlayerService {
 	@Autowired
 	private PlayerRepository playerRepository;
 
-	public void registerPlayer(Player player) {
+	public Player registerPlayer(Player player) {
 
-		playerRepository.save(player);
+		return playerRepository.save(player);
 	}
 
 	public void updatePlayer(Player player) {

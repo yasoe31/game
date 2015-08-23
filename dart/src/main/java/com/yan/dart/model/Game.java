@@ -1,8 +1,7 @@
-package com.yan.game.model;
+package com.yan.dart.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,45 +16,44 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Game {
-
+	
 	@Id
-	@Column(name = "game_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private long creationTime;
+	@Column(name = "game_id")
+	private Long id;
+
+	private Long creationTime;
 
 	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinTable(name = "game_player", 
-				joinColumns = @JoinColumn(referencedColumnName = "game_id"), 
-				inverseJoinColumns = @JoinColumn(referencedColumnName = "player_id"))
-	private List<Player> players;
+	@JoinTable(name = "game_player", joinColumns = @JoinColumn(referencedColumnName = "game_id"), inverseJoinColumns = @JoinColumn(referencedColumnName = "player_id"))
+	private Collection<Player> players;	
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public long getCreationTime() {
+	public Long getCreationTime() {
 		return creationTime;
 	}
 
-	public void setCreationTime(long creationTime) {
+	public void setCreationTime(Long creationTime) {
 		this.creationTime = creationTime;
 	}
 
-	public Collection<Player> getPlayers() {
+	public Collection<Player> getPlayer() {
 		return players;
 	}
 
-	public void setPlayers(List<Player> listPlayers) {
-
-		if (this.players == null) {
+	public void setPlayer(Player player) {
+		if (players ==null) {
 			players = new ArrayList<Player>();
 		}
-		players = listPlayers;
+		
+		players.add(player);
 	}
 
 	@Override
@@ -74,7 +72,9 @@ public class Game {
 
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", creationTime=" + creationTime + "]";
+		return "Game [id=" + id + ", creationTime=" + creationTime
+				+ ", players=" + players + "]";
 	}
+	
 
 }

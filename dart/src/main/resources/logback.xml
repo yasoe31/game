@@ -9,7 +9,7 @@
 	</appender>
 
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<file>${catalina.base}/logs/game.log</file>
+		<file>${catalina.base}/logs/dart.log</file>
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
@@ -19,9 +19,9 @@
 	<logger name="org.springframework" level="INFO" />
 	<logger name="org.springframework.web" level="TRACE" />
 
-	<logger name="com.yan.game.service" level="ALL" />
-	<logger name="com.yan.game.controller" level="ALL" />
-	<logger name="com.yan.game.repository" level="ALL" />
+	<logger name="com.yan.dart.service" level="ALL" />
+	<logger name="com.yan.dart.controller" level="ALL" />
+	<logger name="com.yan.dart.repository" level="ALL" />
 
 
 	<root level="ALL">

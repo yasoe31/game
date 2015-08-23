@@ -26,10 +26,11 @@ public class PlayerController {
 	private PlayerService playerService;
 
 	@RequestMapping(value = "/registerPlayer", method = RequestMethod.POST)
-	public void registerPlayer(@RequestBody Player player) {
+	@ResponseBody
+	public Player registerPlayer(@RequestBody Player player) {
 
 		LOGGER.debug("Register Player");
-		playerService.registerPlayer(player);
+		return playerService.registerPlayer(player);
 	}
 
 	@RequestMapping(value = "/updatePlayer", method = { RequestMethod.POST,
