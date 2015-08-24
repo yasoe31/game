@@ -60,7 +60,7 @@ public class Player {
 		this.point = point;
 	}	
 
-	public Boolean getWin() {
+	public Boolean isWin() {
 		return win;
 	}
 

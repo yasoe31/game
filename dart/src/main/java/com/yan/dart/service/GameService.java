@@ -128,97 +128,164 @@ public class GameService {
 
 			if (otherPlayer.getId() != currentPlayer.getId()) {
 
+				// pointToAdd = otherPlayer.getPoint();
+
 				if (currentPlayer.getNumber().getBullseye() > 3) {
 
 					if (otherPlayer.getNumber() == null
-							|| otherPlayer.getNumber().getBullseye() <= 3) {
+							|| otherPlayer.getNumber().getBullseye() < 3) {
 
-						otherPlayer.setPoint(pointToAdd += 25);
+						for (int i = 3; i < currentPlayer.getNumber()
+								.getBullseye(); i++) {
+							pointToAdd += 25;
+						}
+
+						otherPlayer.setPoint(pointToAdd);
 					}
-					win = win && true;
+					win = (win && true);
+				} else if (currentPlayer.getNumber().getBullseye() >= 3) {
+					win = (win && true);
+
 				} else {
 					win = win && false;
 				}
 
 				if (currentPlayer.getNumber().getTwenty() > 3) {
 					if (otherPlayer.getNumber() == null
-							|| otherPlayer.getNumber().getTwenty() <= 3) {
+							|| otherPlayer.getNumber().getTwenty() < 3) {
 
-						otherPlayer.setPoint(pointToAdd += 20);
+						for (int i = 3; i < currentPlayer.getNumber()
+								.getTwenty(); i++) {
+							pointToAdd += 20;
+						}
+
+						otherPlayer.setPoint(pointToAdd);
 					}
-					win = win && true;
+					win = (win && true);
+
+				} else if (currentPlayer.getNumber().getTwenty() >= 3) {
+					win = (win && true);
+
 				} else {
 					win = win && false;
 				}
 
 				if (currentPlayer.getNumber().getNineteen() > 3) {
 					if (otherPlayer.getNumber() == null
-							|| otherPlayer.getNumber().getNineteen() <= 3) {
+							|| otherPlayer.getNumber().getNineteen() < 3) {
 
-						otherPlayer.setPoint(pointToAdd += 19);
+						for (int i = 3; i < currentPlayer.getNumber()
+								.getNineteen(); i++) {
+							pointToAdd += 19;
+						}
+
+						otherPlayer.setPoint(pointToAdd);
 					}
-					win = win && true;
+					win = (win && true);
+				} else if (currentPlayer.getNumber().getNineteen() >= 3) {
+					win = (win && true);
+
 				} else {
 					win = win && false;
 				}
 
 				if (currentPlayer.getNumber().getEighteen() > 3) {
 					if (otherPlayer.getNumber() == null
-							|| otherPlayer.getNumber().getEighteen() <= 3) {
+							|| otherPlayer.getNumber().getEighteen() < 3) {
 
-						otherPlayer.setPoint(pointToAdd += 18);
+						for (int i = 3; i < currentPlayer.getNumber()
+								.getEighteen(); i++) {
+							pointToAdd += 18;
+						}
+
+						otherPlayer.setPoint(pointToAdd);
 					}
-					win = win && true;
+					win = (win && true);
+				} else if (currentPlayer.getNumber().getEighteen() >= 3) {
+					win = (win && true);
+
 				} else {
 					win = win && false;
 				}
 
 				if (currentPlayer.getNumber().getSeventeen() > 3) {
 					if (otherPlayer.getNumber() == null
-							|| otherPlayer.getNumber().getSeventeen() <= 3) {
+							|| otherPlayer.getNumber().getSeventeen() < 3) {
 
-						otherPlayer.setPoint(pointToAdd += 17);
+						for (int i = 3; i < currentPlayer.getNumber()
+								.getSeventeen(); i++) {
+							pointToAdd += 17;
+						}
+
+						otherPlayer.setPoint(pointToAdd);
 					}
-					win = win && true;
+					win = (win && true);
+				} else if (currentPlayer.getNumber().getSeventeen() >= 3) {
+					win = (win && true);
+
 				} else {
 					win = win && false;
 				}
 
 				if (currentPlayer.getNumber().getSixteen() > 3) {
 					if (otherPlayer.getNumber() == null
-							|| otherPlayer.getNumber().getSixteen() <= 3) {
+							|| otherPlayer.getNumber().getSixteen() < 3) {
 
-						otherPlayer.setPoint(pointToAdd += 16);
+						for (int i = 3; i < currentPlayer.getNumber()
+								.getSixteen(); i++) {
+							pointToAdd += 16;
+						}
+
+						otherPlayer.setPoint(pointToAdd);
 					}
-					win = win && true;
+					win = (win && true);
+				} else if (currentPlayer.getNumber().getSixteen() >= 3) {
+					win = (win && true);
+
 				} else {
 					win = win && false;
 				}
 
 				if (currentPlayer.getNumber().getFifteen() > 3) {
 					if (otherPlayer.getNumber() == null
-							|| otherPlayer.getNumber().getFifteen() <= 3) {
+							|| otherPlayer.getNumber().getFifteen() < 3) {
 
-						otherPlayer.setPoint(pointToAdd += 15);
+						for (int i = 3; i < currentPlayer.getNumber()
+								.getFifteen(); i++) {
+							pointToAdd += 15;
+						}
+
+						otherPlayer.setPoint(pointToAdd);
+						// otherPlayer.setWin(false);
 					}
-					win = win && true;
-					currentPlayer.setWin(win);
+					win = (win && true);
+				} else if (currentPlayer.getNumber().getFifteen() >= 3) {
+					win = (win && true);
+
 				} else {
 					win = win && false;
-					currentPlayer.setWin(win);
 				}
 
-				System.out.println(win+"========================");
-				currentPlayer.setWin(true);
+				if (win && (otherPlayer.getPoint() >= currentPlayer.getPoint())) {
+					for (Player oPlayer : listPlayers) {
+						if (oPlayer.getId() == currentPlayer.getId()) {
+							oPlayer.setWin(win);
+						}
+					}
+				} else {
+					for (Player oPlayer : listPlayers) {
+						if (oPlayer.getId() == currentPlayer.getId()) {
+							oPlayer.setWin(win
+									&& (otherPlayer.getPoint() > currentPlayer
+											.getPoint()));
+						}
+					}
+				}
 
 			}
 
-			currentPlayer.setWin(true);
-			
 		}
-		
-		currentPlayer.setWin(true);
-		
+
 		gameRepository.save(game);
 
 	}
